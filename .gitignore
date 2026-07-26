@@ -1,0 +1,9 @@
+build/
+*.obj
+*.pdb
+*.ilk
+*.exe
+*.res
+*.ini
+playlist.m3u8
+.claude/
