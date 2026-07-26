@@ -16,13 +16,13 @@ BEGIN
     BEGIN
         BLOCK "040904b0"
         BEGIN
-            VALUE "CompanyName",      "PlainAmp"
-            VALUE "FileDescription",  "PlainAmp - offline audio player"
+            VALUE "CompanyName",      "lohPlayer"
+            VALUE "FileDescription",  "lohPlayer - offline audio player"
             VALUE "FileVersion",      "1.0.0.0"
-            VALUE "InternalName",     "PlainAmp"
+            VALUE "InternalName",     "lohPlayer"
             VALUE "LegalCopyright",   "Public domain / MIT"
-            VALUE "OriginalFilename", "PlainAmp.exe"
-            VALUE "ProductName",      "PlainAmp"
+            VALUE "OriginalFilename", "lohPlayer.exe"
+            VALUE "ProductName",      "lohPlayer"
             VALUE "ProductVersion",   "1.0.0.0"
             VALUE "Comments",         "Local playback only. Performs no network access."
         END

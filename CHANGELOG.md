@@ -1,5 +1,20 @@
 # Changelog
 
+## 1.0.3 — 2026-07-26
+
+### Renamed to lohPlayer
+Everything the user or the system sees now says `lohPlayer`:
+
+- executable is `build\lohPlayer.exe`
+- window title, window class (`LohPlayerWnd`) and the error dialog caption
+- settings file `lohPlayer.ini`, and the fallback folder `%APPDATA%\lohPlayer\`
+- manifest assembly identity, and every string in the version resource
+  (ProductName, InternalName, OriginalFilename, FileDescription, CompanyName)
+- README and build script output
+
+Existing `PlainAmp.ini` / `playlist.m3u8` files are not migrated — the new build
+starts from defaults. Rename them by hand if you want the old session back.
+
 ## 1.0.2 — 2026-07-26
 
 ### Playlist now really survives a session

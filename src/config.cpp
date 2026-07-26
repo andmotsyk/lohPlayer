@@ -15,14 +15,14 @@ const wstr& Config::dataDir() {
 
     // Portable first: keep settings next to the exe when that folder is writable.
     wstr exe = ExeDir();
-    wstr probe = exe + L"plainamp.tmp";
+    wstr probe = exe + L"lohplayer.tmp";
     HANDLE h = CreateFileW(probe.c_str(), GENERIC_WRITE, 0, nullptr,
         CREATE_ALWAYS, FILE_ATTRIBUTE_TEMPORARY | FILE_FLAG_DELETE_ON_CLOSE, nullptr);
     if (h != INVALID_HANDLE_VALUE) { CloseHandle(h); dir = exe; return dir; }
 
     wchar_t* appdata = nullptr;
     if (SUCCEEDED(SHGetKnownFolderPath(FOLDERID_RoamingAppData, 0, nullptr, &appdata)) && appdata) {
-        dir = wstr(appdata) + L"\\PlainAmp\\";
+        dir = wstr(appdata) + L"\\lohPlayer\\";
         CoTaskMemFree(appdata);
         CreateDirectoryW(dir.c_str(), nullptr);
     } else {
@@ -31,7 +31,7 @@ const wstr& Config::dataDir() {
     return dir;
 }
 
-wstr Config::iniPath() { return dataDir() + L"PlainAmp.ini"; }
+wstr Config::iniPath() { return dataDir() + L"lohPlayer.ini"; }
 wstr Config::playlistPath() { return dataDir() + L"playlist.m3u8"; }
 
 static int  GetI(const wchar_t* sec, const wchar_t* key, int def, const wstr& f) {

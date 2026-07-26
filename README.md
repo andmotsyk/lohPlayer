@@ -1,6 +1,6 @@
-# PlainAmp
+# lohPlayer
 
-A small, fast, **completely offline** audio player for Windows. One 355 KB `.exe`,
+A small, fast, **completely offline** audio player for Windows. One 367 KB `.exe`,
 no installer, no runtime, no DLLs to ship, no network code of any kind.
 
 Built with nothing but the Win32 API, WASAPI and Media Foundation — the codecs
@@ -16,7 +16,7 @@ Needs Visual Studio 2022 (or Build Tools) with **Desktop development with C++**.
 build.bat
 ```
 
-Output: `build\PlainAmp.exe`. That single file *is* the program — copy it anywhere.
+Output: `build\lohPlayer.exe`. That single file *is* the program — copy it anywhere.
 
 ```bash
 test.bat
@@ -59,9 +59,9 @@ The **Device** button lists every active output endpoint. Pick one to pin
 playback to it, or leave it on *Default device* to follow whatever Windows is
 using. The choice is remembered.
 
-Shared mode is the default, so PlainAmp coexists with browsers and everything
+Shared mode is the default, so lohPlayer coexists with browsers and everything
 else. If another program (or the interface's own control panel) reconfigures the
-card, PlainAmp notices, rebuilds the stream and carries on from the same
+card, lohPlayer notices, rebuilds the stream and carries on from the same
 position instead of going quiet. Plugging in headphones or changing the Windows
 default output moves playback automatically.
 
@@ -110,8 +110,8 @@ PROPSYS   MFPlat  MFReadWrite  AVRT  dwmapi
 ```
 
 No sockets, no HTTP, no telemetry, no update check, no accounts, no cookies, no
-album-art lookup, no scrobbling. Settings live in `PlainAmp.ini` next to the exe
-(or `%APPDATA%\PlainAmp\` if that folder is read-only). Nothing else is written.
+album-art lookup, no scrobbling. Settings live in `lohPlayer.ini` next to the exe
+(or `%APPDATA%\lohPlayer\` if that folder is read-only). Nothing else is written.
 
 ## About SmartScreen
 
@@ -131,7 +131,7 @@ never applied and SmartScreen will not prompt at all. The only way to remove the
 prompt for *other* people is an Authenticode certificate:
 
 ```bash
-signtool sign /fd SHA256 /a /tr http://timestamp.digicert.com /td SHA256 build\PlainAmp.exe
+signtool sign /fd SHA256 /a /tr http://timestamp.digicert.com /td SHA256 build\lohPlayer.exe
 ```
 
 An OV certificate still needs to build reputation; an EV certificate is trusted

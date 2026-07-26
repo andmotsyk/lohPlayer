@@ -47,7 +47,7 @@ set CLFLAGS=/nologo /std:c++17 /utf-8 /O2 /Oi /GL /MT /EHsc /GS /guard:cf /DNDEB
 set LIBS=mfplat.lib mfreadwrite.lib mfuuid.lib mf.lib ole32.lib oleaut32.lib propsys.lib ^
  shlwapi.lib shell32.lib user32.lib gdi32.lib comdlg32.lib dwmapi.lib avrt.lib advapi32.lib
 
-cl %CLFLAGS% /Fo:build\ /Fd:build\ /Fe:build\PlainAmp.exe ^
+cl %CLFLAGS% /Fo:build\ /Fd:build\ /Fe:build\lohPlayer.exe ^
    src\main.cpp src\audio.cpp src\decoder.cpp src\resampler.cpp src\dsp.cpp ^
    src\playlist.cpp src\config.cpp ^
    build\app.res ^
@@ -60,17 +60,17 @@ if errorlevel 1 (
 )
 
 rem ---- offline guarantee: fail the build if any network import crept in -------
-dumpbin /nologo /imports build\PlainAmp.exe > build\imports.txt
+dumpbin /nologo /imports build\lohPlayer.exe > build\imports.txt
 findstr /I /C:"WS2_32" /C:"WSOCK32" /C:"WININET" /C:"WINHTTP" /C:"URLMON" /C:"DNSAPI" /C:"IPHLPAPI" build\imports.txt >nul
 if not errorlevel 1 (
   echo.
   echo *** BUILD REJECTED: a network-capable import was linked in. ***
   findstr /I /C:"WS2_32" /C:"WSOCK32" /C:"WININET" /C:"WINHTTP" /C:"URLMON" /C:"DNSAPI" /C:"IPHLPAPI" build\imports.txt
-  del build\PlainAmp.exe
+  del build\lohPlayer.exe
   exit /b 1
 )
 
-for %%F in (build\PlainAmp.exe) do set SIZE=%%~zF
+for %%F in (build\lohPlayer.exe) do set SIZE=%%~zF
 echo.
-echo Built build\PlainAmp.exe  (!SIZE! bytes)  - no network imports.
+echo Built build\lohPlayer.exe  (!SIZE! bytes)  - no network imports.
 endlocal

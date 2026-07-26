@@ -1,4 +1,4 @@
-// PlainAmp - a small, offline, no-nonsense audio player for Windows.
+// lohPlayer - a small, offline, no-nonsense audio player for Windows.
 #include "common.h"
 #include "audio.h"
 #include "playlist.h"
@@ -215,9 +215,9 @@ static void ApplyEqFromCfg() {
 }
 
 static void UpdateTitle() {
-    wstr t = L"PlainAmp";
+    wstr t = L"lohPlayer";
     if (g.pl.current >= 0 && g.pl.current < g.pl.size())
-        t = RowLabel(g.pl.current) + L"  \x2014  PlainAmp";
+        t = RowLabel(g.pl.current) + L"  \x2014  lohPlayer";
     SetWindowTextW(g.hwnd, t.c_str());
 }
 
@@ -1323,7 +1323,7 @@ int WINAPI wWinMain(HINSTANCE inst, HINSTANCE, LPWSTR cmdLine, int) {
     wc.lpfnWndProc = WndProc;
     wc.hInstance = inst;
     wc.hCursor = LoadCursorW(nullptr, IDC_ARROW);
-    wc.lpszClassName = L"PlainAmpWnd";
+    wc.lpszClassName = L"LohPlayerWnd";
     wc.hIcon = LoadIconW(inst, MAKEINTRESOURCEW(1));
     wc.hIconSm = wc.hIcon;
     wc.style = CS_DBLCLKS;
@@ -1332,7 +1332,7 @@ int WINAPI wWinMain(HINSTANCE inst, HINSTANCE, LPWSTR cmdLine, int) {
     // Create at an arbitrary size first: passing CW_USEDEFAULT for x makes
     // Windows ignore nWidth/nHeight, so the real size is applied below once
     // the window's monitor DPI is known.
-    HWND hwnd = CreateWindowExW(0, L"PlainAmpWnd", L"PlainAmp",
+    HWND hwnd = CreateWindowExW(0, L"LohPlayerWnd", L"lohPlayer",
         WS_OVERLAPPEDWINDOW, CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT,
         nullptr, nullptr, inst, nullptr);
     if (!hwnd) return 1;
@@ -1365,7 +1365,7 @@ int WINAPI wWinMain(HINSTANCE inst, HINSTANCE, LPWSTR cmdLine, int) {
     }
 
     if (!g.player.init()) {
-        MessageBoxW(hwnd, L"No audio output device could be opened.", L"PlainAmp", MB_ICONERROR);
+        MessageBoxW(hwnd, L"No audio output device could be opened.", L"lohPlayer", MB_ICONERROR);
     }
     g.player.notifyHwnd = hwnd;
     g.player.setDeviceId(g.cfg.deviceId);
